@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace Game
+namespace LD48
 {
 	public class TestDirector : MonoBehaviour
 	{
