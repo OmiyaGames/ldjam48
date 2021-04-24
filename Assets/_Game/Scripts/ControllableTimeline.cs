@@ -31,18 +31,18 @@ namespace LD48
 		}
 
 		[SerializeField]
-		float warmUpDuration = 0.5f;
+		float warmUpDuration = 0.25f;
 
 		static PlayState globalState = PlayState.Paused;
 		PlayableDirector timelineCache;
 		float warmUpProgress = 0;
 
+		#region Properties
 		/// <summary>
 		/// 
 		/// </summary>
-		public PlayState GlobalState
+		public static PlayState GlobalState
 		{
-			set => globalState = value;
 			get
 			{
 				if(ActiveControllers.Count == 0)
@@ -54,6 +54,7 @@ namespace LD48
 					return globalState;
 				}
 			}
+			set => globalState = value;
 		}
 		/// <summary>
 		/// 
@@ -94,6 +95,7 @@ namespace LD48
 				}
 			}
 		}
+		#endregion
 
 		/// <summary>
 		/// 
@@ -155,7 +157,7 @@ namespace LD48
 			if(warmUpProgress < warmUpDuration)
 			{
 				// If still warming up, lerp the progress we're making
-				returnTime = (warmUpProgress / warmUpDuration);
+				returnTime *= (warmUpProgress / warmUpDuration);
 			}
 			return returnTime;
 		}

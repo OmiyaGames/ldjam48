@@ -10,7 +10,11 @@ namespace LD48
 	/// </summary>
 	public class SC_MovingPlatform : MonoBehaviour
 	{
-		public Transform activePlatform;
+		[SerializeField]
+		float activateThreshold = 0.01f;
+		[SerializeField]
+		[OmiyaGames.ReadOnly]
+		Transform activePlatform;
 
 		CharacterController controller;
 		Vector3 moveDirection;
@@ -32,7 +36,7 @@ namespace LD48
 			{
 				Vector3 newGlobalPlatformPoint = activePlatform.TransformPoint(activeLocalPlatformPoint);
 				moveDirection = newGlobalPlatformPoint - activeGlobalPlatformPoint;
-				if(moveDirection.magnitude > 0.01f)
+				if(moveDirection.magnitude > activateThreshold)
 				{
 					controller.Move(moveDirection);
 				}
@@ -51,7 +55,7 @@ namespace LD48
 			}
 			else
 			{
-				if(moveDirection.magnitude > 0.01f)
+				if(moveDirection.magnitude > activateThreshold)
 				{
 					moveDirection = Vector3.Lerp(moveDirection, Vector3.zero, Time.deltaTime);
 					controller.Move(moveDirection);

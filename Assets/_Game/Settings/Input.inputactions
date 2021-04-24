@@ -1,5 +1,5 @@
 {
-    "name": "Controller",
+    "name": "Input",
     "maps": [
         {
             "name": "FPS",
@@ -9,14 +9,6 @@
                     "name": "Movement",
                     "type": "Button",
                     "id": "c4ed288d-cbff-4207-9477-e10b8f2f9688",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "b08b4a2b-4e2b-4b5b-a2af-65e30c88bdf3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -46,9 +38,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Zoom",
+                    "name": "Action",
                     "type": "Button",
                     "id": "ffea3250-66cb-441c-9059-bf00d6c005e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Play Timeline",
+                    "type": "Button",
+                    "id": "fdf0ddd1-dddb-4d13-879c-5120f2aa3a9d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Rewind Timeline",
+                    "type": "Button",
+                    "id": "ca3943bd-cea2-4a38-abb4-0ae75851346a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -58,22 +66,22 @@
                 {
                     "name": "",
                     "id": "b56e1d31-7129-4f17-b3cc-495401dc6da6",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Zoom",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "b0df695c-6ede-4f8a-89d8-4d82511692a2",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Zoom",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -140,28 +148,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9de9acc3-01b1-451f-ae38-e763552c59b4",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c53b6cfe-46fc-44b3-b3ee-2def3808c40c",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -274,6 +260,72 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ac49bdd2-fc02-4d53-b06a-e1f988d71832",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Play Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee200a66-62a1-4f44-b446-56f94df23173",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Play Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1013fa75-af4c-498b-a3e6-3ee154bc70dc",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Play Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1b5aaff-9375-4468-a4b9-43f72ba303b2",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rewind Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09594532-cc9e-4f87-843a-d0263e13a5a9",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rewind Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfd4cd40-4b1f-406b-8019-efdfdf2cf0ad",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rewind Timeline",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
