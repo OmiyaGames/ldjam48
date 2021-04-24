@@ -3,7 +3,7 @@ Full Details
 
 * Each source code should now have license information.  If not, assume they're under the MIT license, listed below.
 * Any non-code, text-based files, such as animations and prefabs, are under the MIT license, listed below (unless noted otherwise).
-* All binary files, including images and sound effects, are under Copyright (c) 2011 Omiya Games (unless noted otherwise).
+* All binary files, including images and sound effects, are under Copyright (c) 2021 Omiya Games (unless noted otherwise).
 
 The MIT License (MIT)
 ===============
