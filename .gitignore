@@ -101,3 +101,5 @@ obj.meta
 /Documentation~/api/*
 /Documentation~/manual/changelog.*
 /Builds~/*
+/Assets/Samples
+/Assets/Samples.meta
