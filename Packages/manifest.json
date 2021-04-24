@@ -61,7 +61,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "io.igaryhe.firstpersondrifter": "0.4.1"
   },
   "scopedRegistries": [
     {
@@ -76,7 +77,8 @@
         "com.omiyagames.web",
         "com.omiyagames.web.security",
         "com.openupm",
-        "io.github.icsharpcode.sharpziplib"
+        "io.github.icsharpcode.sharpziplib",
+        "io.igaryhe.firstpersondrifter"
       ]
     }
   ]

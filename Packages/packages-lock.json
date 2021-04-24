@@ -333,6 +333,17 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "io.igaryhe.firstpersondrifter": {
+      "version": "0.4.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.inputsystem": "1.0.0",
+        "com.unity.textmeshpro": "2.1.1",
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://package.openupm.com"
+    },
     "nuget.mono-cecil": {
       "version": "0.1.6-preview",
       "depth": 0,
