@@ -36,6 +36,8 @@ namespace LD48
 		GameObject inventoryObject;
 		[SerializeField]
 		GameObject dropLocation;
+		[SerializeField]
+		MonoBehaviour[] toggleScripts;
 
 		[Header("Debug")]
 		[SerializeField]
@@ -45,6 +47,7 @@ namespace LD48
 		Transform originalParent;
 
 		bool isDropLocationVisible = false;
+		bool? wasKinematic = null;
 		Collider colliderCache;
 
 		/// <summary>
@@ -92,12 +95,20 @@ namespace LD48
 		}
 
 		/// <summary>
-		///  Start is called before the first frame update
+		/// 
+		/// </summary>
+		public Transform OriginalParent
+		{
+			get => originalParent;
+			private set => originalParent = value;
+		}
+
+		/// <summary>
+		/// Start is called before the first frame update
 		/// </summary>
 		void Start()
 		{
-			// FIXME: anything to do
-			if(originalParent == null)
+			if(OriginalParent == null)
 			{
 				Reset();
 			}
@@ -117,7 +128,7 @@ namespace LD48
 		/// </summary>
 		private void Reset()
 		{
-			originalParent = transform.parent;
+			OriginalParent = transform.parent;
 		}
 
 		/// <summary>
@@ -125,12 +136,31 @@ namespace LD48
 		/// </summary>
 		private void UpdateObjects()
 		{
+			// First, check if wasKinematic is set
+			if((wasKinematic == null) && Collider.attachedRigidbody)
+			{
+				// if not, set it now
+				wasKinematic = Collider.attachedRigidbody.isKinematic;
+			}
+
 			// Check states
 			if(CurrentState != State.InInventory)
 			{
 				// Activate the world object
 				worldObject.SetActive(true);
 				Collider.enabled = true;
+
+				// Activate scripts
+				foreach(var script in toggleScripts)
+				{
+					script.enabled = true;
+				}
+
+				// Revert the rigidbody
+				if(wasKinematic.HasValue && Collider.attachedRigidbody)
+				{
+					Collider.attachedRigidbody.isKinematic = wasKinematic.Value;
+				}
 
 				// Deactivate everything else
 				inventoryObject.SetActive(false);
@@ -147,6 +177,16 @@ namespace LD48
 
 				// Deactivate everything else
 				worldObject.SetActive(false);
+				foreach(var script in toggleScripts)
+				{
+					script.enabled = false;
+				}
+
+				// Make the rigidbody immobile
+				if(Collider.attachedRigidbody)
+				{
+					Collider.attachedRigidbody.isKinematic = true;
+				}
 			}
 		}
 	}

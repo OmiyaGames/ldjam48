@@ -343,6 +343,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Time Bubble
       objectReference: {fileID: 0}
+    - target: {fileID: 3424434002706896935, guid: 9cbf383e99a78d341a6f011433fe498d,
+        type: 3}
+      propertyPath: toggleScripts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424434002706896935, guid: 9cbf383e99a78d341a6f011433fe498d,
+        type: 3}
+      propertyPath: toggleScripts.Array.data[0]
+      value: 
+      objectReference: {fileID: 7854653480216424041}
     - target: {fileID: 5431477486288522009, guid: 9cbf383e99a78d341a6f011433fe498d,
         type: 3}
       propertyPath: m_IsActive

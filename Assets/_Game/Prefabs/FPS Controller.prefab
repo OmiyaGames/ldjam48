@@ -28,6 +28,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5397811276409539336}
   - component: {fileID: 5397811276398650052}
+  - component: {fileID: 8149085425721196854}
   m_Layer: 3
   m_Name: Look Up-Down
   m_TagString: Untagged
@@ -43,7 +44,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5397811276409378600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5402548899440926449}
@@ -70,6 +71,31 @@ MonoBehaviour:
   minimumY: -85
   maximumY: 85
   framesOfSmoothing: 5
+--- !u!114 &8149085425721196854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397811276409378600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca57f2e5313f79e4990aa6d5dfc860e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanItemDistance: 5
+  itemMasks:
+    serializedVersion: 2
+    m_Bits: 193
+  itemTag: Item
+  interactiveTag: Interactive
+  gapBetweenActionSeconds: 0.5
+  interactiveHud: {fileID: 0}
+  hoverLabel: {fileID: 0}
+  itemLabel: {fileID: 0}
+  carrying: {fileID: 0}
+  hoveredItem: {fileID: 0}
+  hoveredInteraction: {fileID: 0}
 --- !u!1 &5397811276409378602
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +298,19 @@ MonoBehaviour:
     m_ActionId: 0ae0c49c-ee1b-4256-a96d-5b8383832711
     m_ActionName: FPS/Look[/Mouse/delta,/XInputControllerWindows/rightStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8149085425721196854}
+        m_TargetAssemblyTypeName: LD48.Inventory, Assembly-CSharp
+        m_MethodName: OnAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ffea3250-66cb-441c-9059-bf00d6c005e4
     m_ActionName: FPS/Zoom[/Mouse/rightButton,/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
@@ -393,7 +431,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cbe2fda8b8964554a98e698561c45be7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cbe2fda8b8964554a98e698561c45be7,
         type: 3}
