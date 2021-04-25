@@ -723,4 +723,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 394642007387872340}
+  doorType: 1
+  infoOnCanOpen:
+    displayIcon: 0
+    displayInstructions: Open door
+  infoOnLocked:
+    displayIcon: 1
+    displayInstructions: Door is locked
+  infoOnSwitch:
+    displayIcon: 2
+    displayInstructions: May open with a switch
   isOpen: 0

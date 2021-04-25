@@ -24,6 +24,16 @@ namespace LD48
 		Animator animator;
 		[SerializeField]
 		State doorType;
+
+		[Header("Hover Display")]
+		[SerializeField]
+		HoverInfo infoOnCanOpen;
+		[SerializeField]
+		HoverInfo infoOnLocked;
+		[SerializeField]
+		HoverInfo infoOnSwitch;
+
+		[Header("Debug")]
 		[SerializeField]
 		[OmiyaGames.ReadOnly]
 		bool isOpen = false;
@@ -45,15 +55,44 @@ namespace LD48
 		}
 
 		/// <inheritdoc/>
-		public override bool OnHover(out HoverInfo info)
+		public override bool OnHover(Inventory source, out HoverInfo info)
 		{
-			// FIXME: add a notification to the player they can open the door with a mouse click!
+			// Setup default return value
 			info = null;
+
+			// Only show hover instructions if door is closed
+			if(IsOpen == false)
+			{
+				// Check the door type
+				switch(doorType)
+				{
+					case State.Locked:
+						// Check if we're carrying a key
+						if(Inventory.Instance?.Carrying?.ItemType == Item.Type.Key)
+						{
+							// Indicate we can open the door
+							info = infoOnCanOpen;
+						}
+						else
+						{
+							// Otherwise, indicate the door is locked
+							info = infoOnLocked;
+						}
+						return true;
+					case State.Switch:
+						info = infoOnSwitch;
+						return true;
+					default:
+					case State.OpenOnClick:
+						info = infoOnCanOpen;
+						return true;
+				}
+			}
 			return false;
 		}
 
 		/// <inheritdoc/>
-		public override bool OnClick()
+		public override bool OnClick(Inventory source)
 		{
 			if(IsOpen == false)
 			{

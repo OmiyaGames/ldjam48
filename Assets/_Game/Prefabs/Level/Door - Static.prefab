@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1399552296756581921, guid: f31767c718868aa4c9171e05a01dea59,
+        type: 3}
+      propertyPath: doorType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2923539573622210042, guid: f31767c718868aa4c9171e05a01dea59,
         type: 3}
       propertyPath: m_RootOrder
@@ -70,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 4550653463022251790, guid: f31767c718868aa4c9171e05a01dea59,
         type: 3}
       propertyPath: m_Name
-      value: Door - Static Variant
+      value: Door - Static
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f31767c718868aa4c9171e05a01dea59, type: 3}
