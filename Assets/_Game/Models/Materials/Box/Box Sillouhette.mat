@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Drop Sillouhette
+  m_Name: Box Sillouhette
   m_Shader: {fileID: -6465566751694194690, guid: 7cafa0730747f7340ae4059dff320a75,
     type: 3}
   m_ShaderKeywords: _NORMALMAP
@@ -92,7 +92,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Outline_Factor: 3
+    - Outline_Factor: 1.5
     - _AlphaClip: 0
     - _Blend: 2
     - _BlendOp: 0

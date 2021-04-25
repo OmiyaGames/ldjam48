@@ -156,10 +156,19 @@ namespace LD48
 					script.enabled = true;
 				}
 
-				// Revert the rigidbody
-				if(wasKinematic.HasValue && Collider.attachedRigidbody)
+				// Update Rigidbody
+				if(Collider.attachedRigidbody)
 				{
-					Collider.attachedRigidbody.isKinematic = wasKinematic.Value;
+					if(CurrentState == State.Paused)
+					{
+						// Make the rigidbody immobile
+						Collider.attachedRigidbody.isKinematic = true;
+					}
+					else if(wasKinematic.HasValue)
+					{
+						// Revert the rigidbody
+						Collider.attachedRigidbody.isKinematic = wasKinematic.Value;
+					}
 				}
 
 				// Deactivate everything else
@@ -170,22 +179,22 @@ namespace LD48
 			{
 				// Activate the inventory object
 				inventoryObject.SetActive(true);
-				Collider.enabled = false;
 
 				// Check drop location flag
 				dropLocation.SetActive(IsDropLocationVisible);
-
-				// Deactivate everything else
-				worldObject.SetActive(false);
-				foreach(var script in toggleScripts)
-				{
-					script.enabled = false;
-				}
 
 				// Make the rigidbody immobile
 				if(Collider.attachedRigidbody)
 				{
 					Collider.attachedRigidbody.isKinematic = true;
+				}
+
+				// Deactivate everything else
+				worldObject.SetActive(false);
+				Collider.enabled = false;
+				foreach(var script in toggleScripts)
+				{
+					script.enabled = false;
 				}
 			}
 		}
