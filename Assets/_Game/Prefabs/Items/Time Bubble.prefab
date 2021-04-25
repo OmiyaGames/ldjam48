@@ -346,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 3424434002706896935, guid: 9cbf383e99a78d341a6f011433fe498d,
         type: 3}
       propertyPath: displayName
-      value: time bubble
+      value: bubble
       objectReference: {fileID: 0}
     - target: {fileID: 3424434002706896935, guid: 9cbf383e99a78d341a6f011433fe498d,
         type: 3}

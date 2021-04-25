@@ -92,7 +92,7 @@ MonoBehaviour:
   gapBetweenActionSeconds: 0.5
   interactiveHud: {fileID: 0}
   hoverLabel: {fileID: 0}
-  itemLabel: {fileID: 0}
+  carryingItemLabel: {fileID: 0}
   carrying: {fileID: 0}
   hoveredItem: {fileID: 0}
   hoveredInteraction: {fileID: 0}
@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 208642757798965315}
   - component: {fileID: 802797890129665627}
   - component: {fileID: 1255390573543749276}
+  - component: {fileID: 6721929178246604172}
   m_Layer: 3
   m_Name: FPS Controller
   m_TagString: Player
@@ -376,6 +377,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486c39949accaf34d816213737eda68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6721929178246604172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397811276409378602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727a796ef9ced943b89bd458428ec30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAt: {fileID: 0}
+  resetBody: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &5397811276670216195
 MonoBehaviour:
   m_ObjectHideFlags: 0

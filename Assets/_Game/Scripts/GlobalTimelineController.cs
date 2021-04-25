@@ -20,6 +20,11 @@ namespace LD48
 			Rewind
 		}
 
+		[SerializeField]
+		bool enablePlayKey = true;
+		[SerializeField]
+		bool enableRewindKey = true;
+
 		bool isPlayKeyDown = false, isRewindKeyDown = false;
 
 		#region Properties
@@ -67,6 +72,22 @@ namespace LD48
 			get;
 			private set;
 		} = Key.None;
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool IsPlayKeyEnabled
+		{
+			get => enablePlayKey;
+			set => enablePlayKey = value;
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool IsRewindKeyEnabled
+		{
+			get => enableRewindKey;
+			set => enableRewindKey = value;
+		}
 		#endregion
 
 		#region Input Actions
@@ -99,12 +120,26 @@ namespace LD48
 			ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Paused;
 
 			// Check if script is enabled, and any key is down
-			if(enabled && (IsPlayKeyDown || IsRewindKeyDown))
+			if(enabled == true)
 			{
-				// Grab the last key, and update state accordingly
-				ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Playing;
-				if(LastKeyPressed == Key.Rewind)
+				// Check if ALL keys are down
+				if(IsPlayKeyDown && IsPlayKeyEnabled && IsRewindKeyDown && IsRewindKeyEnabled)
 				{
+					// Grab the last key, and update state accordingly
+					ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Playing;
+					if(LastKeyPressed == Key.Rewind)
+					{
+						ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Rewinding;
+					}
+				}
+				else if(IsPlayKeyDown && IsPlayKeyEnabled)
+				{
+					// Check if play key is down
+					ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Playing;
+				}
+				else if(IsRewindKeyDown && IsRewindKeyEnabled)
+				{
+					// Check if rewind key is down
 					ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Rewinding;
 				}
 			}
