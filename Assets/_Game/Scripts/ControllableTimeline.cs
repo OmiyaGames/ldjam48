@@ -123,18 +123,12 @@ namespace LD48
 			{
 				case PlayState.Playing:
 					newTime += getTimeIncrement();
-					if(newTime > Director.playableAsset.duration)
-					{
-						newTime = Director.playableAsset.duration;
-					}
+					BindTimeInRange(ref newTime);
 					SetTimeline(newTime);
 					break;
 				case PlayState.Rewinding:
 					newTime -= getTimeIncrement();
-					if(newTime < 0)
-					{
-						newTime = 0;
-					}
+					BindTimeInRange(ref newTime);
 					SetTimeline(newTime);
 					break;
 				case PlayState.Paused:
@@ -170,6 +164,42 @@ namespace LD48
 		{
 			Director.time = newTime;
 			Director.Evaluate();
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="newTime"></param>
+		void BindTimeInRange(ref double newTime)
+		{
+			if(newTime > Director.playableAsset.duration)
+			{
+				// Check whether we *don't* loop
+				if(Director.extrapolationMode != DirectorWrapMode.Loop)
+				{
+					// Clamp time
+					newTime = Director.playableAsset.duration;
+				}
+				else
+				{
+					// Loop time
+					newTime -= Director.playableAsset.duration;
+				}
+			}
+			else if(newTime < 0)
+			{
+				// Check whether we *don't* loop
+				if(Director.extrapolationMode != DirectorWrapMode.Loop)
+				{
+					// Clamp time
+					newTime = 0;
+				}
+				else
+				{
+					// Loop time
+					newTime += Director.playableAsset.duration;
+				}
+			}
 		}
 	}
 }
