@@ -103,3 +103,4 @@ obj.meta
 /Builds~/*
 /Assets/Samples
 /Assets/Samples.meta
+*.blend[0-9]

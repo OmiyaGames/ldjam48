@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using System;
 
 namespace LD48
 {
@@ -12,6 +9,10 @@ namespace LD48
 	/// </summary>
 	public class Inventory : MonoBehaviour
 	{
+		public const string ItemHoveredBoolField = "Item Hovered";
+		public const string ItemCarriedBoolField = "Carrying Item";
+		public const string HoveredItemChangedTrigger = "Item Changed";
+
 		[Header("Raycast")]
 		[SerializeField]
 		float scanItemDistance = 5f;
@@ -30,7 +31,7 @@ namespace LD48
 		[SerializeField]
 		TextMeshProUGUI hoverLabel;
 		[SerializeField]
-		TextMeshProUGUI itemLabel;
+		TextMeshProUGUI carryingItemLabel;
 
 		[Header("Debug")]
 		[SerializeField]
@@ -74,8 +75,8 @@ namespace LD48
 				// Check if anything changed
 				if(hoveredItem != value)
 				{
+					UpdateHud(hoveredItem, value);
 					hoveredItem = value;
-					UpdateHud();
 				}
 			}
 		}
@@ -90,8 +91,8 @@ namespace LD48
 			{
 				if(hoveredInteraction != null)
 				{
+					UpdateHud(hoveredInteraction, value);
 					hoveredInteraction = value;
-					UpdateHud();
 				}
 			}
 		}
@@ -178,6 +179,9 @@ namespace LD48
 			// Set the property to null
 			Carrying = null;
 
+			// Play dropping item HUD animation
+			interactiveHud.SetBool(ItemCarriedBoolField, false);
+
 			// Temporarily disable any actions
 			lastSetAction = Time.time;
 		}
@@ -198,6 +202,10 @@ namespace LD48
 			Carrying.transform.localScale = Vector3.one;
 			Carrying.transform.localRotation = Quaternion.identity;
 
+			// Update label, play picking up item HUD animation
+			carryingItemLabel.text = Carrying.DisplayName;
+			interactiveHud.SetBool(ItemCarriedBoolField, true);
+
 			// Temporarily disable any actions
 			lastSetAction = Time.time;
 		}
@@ -205,9 +213,53 @@ namespace LD48
 		/// <summary>
 		/// 
 		/// </summary>
-		private void UpdateHud()
+		/// <param name="oldItem"></param>
+		/// <param name="newItem"></param>
+		private void UpdateHud(Item oldItem, Item newItem)
+		{
+			// Set whether to show the hover information
+			interactiveHud.SetBool(ItemHoveredBoolField, (newItem != null));
+
+			// Check if there's an item
+			if(newItem != null)
+			{
+				// Update text
+				hoverLabel.text = newItem.DisplayName;
+
+				// Check if hovered item simply changed
+				if(oldItem != null)
+				{
+					// Indicate change
+					interactiveHud.ResetTrigger(HoveredItemChangedTrigger);
+					interactiveHud.SetTrigger(HoveredItemChangedTrigger);
+				}
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="oldInteraction"></param>
+		/// <param name="newInteraction"></param>
+		private void UpdateHud(MonoBehaviour oldInteraction, MonoBehaviour newInteraction)
 		{
 			//FIXME: actually update the HUD
+
+			// Check if we're carrying an item
+			if(Carrying)
+			{
+				if(newInteraction == null)
+				{
+					// Show the drop item prompt if we're not going to interact with anything.
+					interactiveHud.SetBool(ItemCarriedBoolField, true);
+				}
+				else if(newInteraction.enabled)
+				{
+					// Hide the drop item prompt if we could interact with something.
+					// The interaction takes priority.
+					interactiveHud.SetBool(ItemCarriedBoolField, false);
+				}
+			}
 		}
 	}
 }

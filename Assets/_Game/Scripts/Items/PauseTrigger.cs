@@ -206,6 +206,9 @@ namespace LD48
 			// Cleanup item
 			CleanUpItem(info.item);
 
+			// Revert the item to Idle
+			info.item.CurrentState = Item.State.Idle;
+
 			// Remove the item from the respective maps
 			collectedItems.Remove(info.collider);
 			itemToInfoMap.Remove(info.item);

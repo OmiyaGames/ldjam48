@@ -50,16 +50,19 @@ namespace LD48
 		bool? wasKinematic = null;
 		Collider colliderCache;
 
+		#region Properties
 		/// <summary>
 		/// 
 		/// </summary>
 		public Vector3 DropLocation => dropLocation.transform.position;
-
 		/// <summary>
 		/// Grab the attached collider.
 		/// </summary>
-		Collider Collider => OmiyaGames.Helpers.GetComponentCached(this, ref colliderCache);
-
+		public Collider Collider => OmiyaGames.Helpers.GetComponentCached(this, ref colliderCache);
+		/// <summary>
+		/// 
+		/// </summary>
+		public string DisplayName => displayName;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -77,7 +80,6 @@ namespace LD48
 				}
 			}
 		}
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -93,7 +95,6 @@ namespace LD48
 				}
 			}
 		}
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -102,6 +103,7 @@ namespace LD48
 			get => originalParent;
 			private set => originalParent = value;
 		}
+		#endregion
 
 		/// <summary>
 		/// Start is called before the first frame update
@@ -146,48 +148,73 @@ namespace LD48
 			// Check states
 			if(CurrentState != State.InInventory)
 			{
-				// Activate the world object
-				worldObject.SetActive(true);
-				Collider.enabled = true;
-
-				// Activate scripts
-				foreach(var script in toggleScripts)
-				{
-					script.enabled = true;
-				}
-
-				// Revert the rigidbody
-				if(wasKinematic.HasValue && Collider.attachedRigidbody)
-				{
-					Collider.attachedRigidbody.isKinematic = wasKinematic.Value;
-				}
-
-				// Deactivate everything else
-				inventoryObject.SetActive(false);
-				dropLocation.SetActive(false);
+				SetupWorldMode();
 			}
 			else
 			{
-				// Activate the inventory object
-				inventoryObject.SetActive(true);
-				Collider.enabled = false;
+				SetupInventoryMode();
+			}
+		}
 
-				// Check drop location flag
-				dropLocation.SetActive(IsDropLocationVisible);
+		/// <summary>
+		/// 
+		/// </summary>
+		private void SetupInventoryMode()
+		{
+			// Activate the inventory object
+			inventoryObject.SetActive(true);
 
-				// Deactivate everything else
-				worldObject.SetActive(false);
-				foreach(var script in toggleScripts)
+			// Check drop location flag
+			dropLocation.SetActive(IsDropLocationVisible);
+
+			// Make the rigidbody immobile
+			if(Collider.attachedRigidbody)
+			{
+				Collider.attachedRigidbody.isKinematic = true;
+			}
+
+			// Deactivate everything else
+			worldObject.SetActive(false);
+			Collider.enabled = false;
+			foreach(var script in toggleScripts)
+			{
+				script.enabled = false;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void SetupWorldMode()
+		{
+			// Activate the world object
+			worldObject.SetActive(true);
+			Collider.enabled = true;
+
+			// Activate scripts
+			foreach(var script in toggleScripts)
+			{
+				script.enabled = true;
+			}
+
+			// Update Rigidbody
+			if(Collider.attachedRigidbody)
+			{
+				if(CurrentState == State.Paused)
 				{
-					script.enabled = false;
-				}
-
-				// Make the rigidbody immobile
-				if(Collider.attachedRigidbody)
-				{
+					// Make the rigidbody immobile
 					Collider.attachedRigidbody.isKinematic = true;
 				}
+				else if(wasKinematic.HasValue)
+				{
+					// Revert the rigidbody
+					Collider.attachedRigidbody.isKinematic = wasKinematic.Value;
+				}
 			}
+
+			// Deactivate everything else
+			inventoryObject.SetActive(false);
+			dropLocation.SetActive(false);
 		}
 	}
 }
