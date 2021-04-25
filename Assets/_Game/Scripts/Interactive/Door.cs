@@ -26,6 +26,8 @@ namespace LD48
 		Animator animator;
 		[SerializeField]
 		State doorType;
+		[SerializeField]
+		Rigidbody[] activateOnUnlock;
 
 		[Header("Hover Display")]
 		[SerializeField]
@@ -107,7 +109,15 @@ namespace LD48
 				else if((doorType == State.Locked) && (Inventory.Instance?.Carrying?.ItemType == Item.Type.Key))
 				{
 					IsOpen = true;
+
+					// Destroy the key
 					Inventory.Instance.DestroyCarryingItem();
+
+					// Activate rigidbodies
+					foreach(var body in activateOnUnlock)
+					{
+						body.isKinematic = false;
+					}
 					return true;
 				}
 			}
