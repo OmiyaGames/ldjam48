@@ -20,6 +20,8 @@ namespace LD48
 		}
 		const string OpenBoolField = "Is Open";
 
+		public event System.Action<Door, bool> OnOpenChanged;
+
 		[SerializeField]
 		Animator animator;
 		[SerializeField]
@@ -50,6 +52,7 @@ namespace LD48
 				{
 					isOpen = value;
 					animator.SetBool(OpenBoolField, isOpen);
+					OnOpenChanged?.Invoke(this, isOpen);
 				}
 			}
 		}
