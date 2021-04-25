@@ -9,6 +9,14 @@ namespace LD48
 	/// </summary>
 	public class Inventory : MonoBehaviour
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public static Inventory Instance
+		{
+			get;
+			private set;
+		} = null;
 		public const string ItemHoveredBoolField = "Item Hovered";
 		public const string ItemCarriedBoolField = "Carrying Item";
 		public const string HoveredItemChangedTrigger = "Item Changed";
@@ -42,12 +50,13 @@ namespace LD48
 		Item hoveredItem = null;
 		[SerializeField]
 		[OmiyaGames.ReadOnly]
-		MonoBehaviour hoveredInteraction = null;
+		IInteractable hoveredInteraction = null;
 
 		Ray rayCache = new Ray();
 		RaycastHit hitCache;
 		float lastSetAction = 0;
 
+		#region Properties
 		/// <summary>
 		/// Indicates the item being carried
 		/// </summary>
@@ -84,7 +93,7 @@ namespace LD48
 		/// <summary>
 		/// 
 		/// </summary>
-		public MonoBehaviour HoveredInteraction
+		public IInteractable HoveredInteraction
 		{
 			get => hoveredInteraction;
 			private set
@@ -95,6 +104,15 @@ namespace LD48
 					hoveredInteraction = value;
 				}
 			}
+		}
+		#endregion
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void Awake()
+		{
+			Instance = this;
 		}
 
 		/// <summary>
@@ -127,11 +145,22 @@ namespace LD48
 							return;
 						}
 					}
+
+					// Check if we're hovering over an interactive item
 				}
 			}
 
 			// Otherwise, indicate we're not hovering over anything
 			HoveredItem = null;
+			HoveredInteraction = null;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void OnDestroy()
+		{
+			Instance = null;
 		}
 
 		/// <summary>
@@ -149,7 +178,8 @@ namespace LD48
 				}
 				else if(HoveredInteraction != null)
 				{
-					// FIXME: do something with the interaction!
+					// Click on the hovered object
+					HoveredInteraction.OnClick();
 
 					// Temporarily disable any actions
 					lastSetAction = Time.time;
@@ -162,6 +192,18 @@ namespace LD48
 			else if(Carrying != null)
 			{
 				Carrying.IsDropLocationVisible = (context.phase == InputActionPhase.Performed);
+			}
+		}
+
+		/// <summary>
+		/// Destroy the item the inventory is carrying
+		/// </summary>
+		public void DestroyCarryingItem()
+		{
+			if(Carrying)
+			{
+				Destroy(Carrying.gameObject);
+				Carrying = null;
 			}
 		}
 
@@ -241,7 +283,7 @@ namespace LD48
 		/// </summary>
 		/// <param name="oldInteraction"></param>
 		/// <param name="newInteraction"></param>
-		private void UpdateHud(MonoBehaviour oldInteraction, MonoBehaviour newInteraction)
+		private void UpdateHud(IInteractable oldInteraction, IInteractable newInteraction)
 		{
 			//FIXME: actually update the HUD
 

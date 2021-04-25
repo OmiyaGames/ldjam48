@@ -20,7 +20,14 @@ namespace LD48
 			InInventory,
 			Paused
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		public enum Type
+		{
+			Default,
+			Key
+		}
 		/// <summary>
 		/// 
 		/// </summary>
@@ -28,6 +35,8 @@ namespace LD48
 
 		[SerializeField]
 		string displayName = "item";
+		[SerializeField]
+		Type itemType = Type.Default;
 
 		[Header("Inventory State")]
 		[SerializeField]
@@ -59,6 +68,10 @@ namespace LD48
 		/// Grab the attached collider.
 		/// </summary>
 		public Collider Collider => OmiyaGames.Helpers.GetComponentCached(this, ref colliderCache);
+		/// <summary>
+		/// 
+		/// </summary>
+		public Type ItemType => itemType;
 		/// <summary>
 		/// 
 		/// </summary>
