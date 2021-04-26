@@ -22,6 +22,7 @@ namespace LD48
 		public const string InteractableHoveredBoolField = "Interactable Hovered";
 		public const string ItemCarriedBoolField = "Carrying Item";
 		public const string HoveredItemChangedTrigger = "Item Changed";
+		public const string IsInteractableBoolField = "Is Interactable";
 
 		[Header("Raycast")]
 		[SerializeField]
@@ -333,6 +334,7 @@ namespace LD48
 			{
 				// Set whether to show the hover information
 				interactiveHud.SetBool(InteractableHoveredBoolField, true);
+				interactiveHud.SetBool(IsInteractableBoolField, (info.displayIcon == IInteractable.HoverIcon.Interact));
 				interactableLabel.text = info.displayInstructions;
 
 				// FIXME: actually update the HUD
