@@ -27,7 +27,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.43873918, y: 0.12520051, z: 0.069862366}
+  m_Size: {x: 0.8774784, y: 0.250401, z: 0.13972475}
   m_Center: {x: 0.0052197576, y: -0.0011072159, z: -0.0022156239}
 --- !u!1001 &3595417508431597348
 PrefabInstance:
@@ -44,27 +44,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.7687724
+      value: 5.537546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.7687724
+      value: 5.537546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 31.998003
+      value: 63.996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.033685446
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
@@ -370,17 +370,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.7687726
+      value: 5.537546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.7687726
+      value: 5.537546
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 31.998003
+      value: 63.996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cb1f045aa8d357b4cb1ca8f33d2dc05c,
         type: 3}
