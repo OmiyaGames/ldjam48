@@ -15,14 +15,11 @@ EditorBuildSettings:
     path: Assets/Omiya Games/Scenes/Menus/Credits.unity
     guid: 6d241a6195e8cd04d843ca2225f9ea70
   - enabled: 1
-    path: Assets/Omiya Games/Scenes/Level 1.unity
-    guid: 9aadfb4da05401b46b898f2723c0eb26
+    path: Assets/_Game/Scenes/Level 1.unity
+    guid: 1f055df1685c1cd44952d0e8d79a943b
   - enabled: 1
-    path: Assets/Omiya Games/Scenes/Level 2.unity
-    guid: 68f5a1bef00414ba185512252910f48f
-  - enabled: 1
-    path: Assets/Omiya Games/Scenes/Level 3.unity
-    guid: ba98f34aea46a83409e5386e2c8c2253
+    path: Assets/_Game/Scenes/Level 2.unity
+    guid: 832bbe9a1fbd6764585c79603fa22630
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4daa83795912dff4fb079da14fc9e52d,
       type: 2}

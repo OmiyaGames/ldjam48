@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 2932759609148039011, guid: d70875a0e26ee6a45a196af88b53fc2e,
         type: 3}
       propertyPath: m_fontSize
-      value: 107
+      value: 106.95
       objectReference: {fileID: 0}
     - target: {fileID: 2932759609148039011, guid: d70875a0e26ee6a45a196af88b53fc2e,
         type: 3}
@@ -203,6 +203,11 @@ PrefabInstance:
       value: Level Menu - LD48
       objectReference: {fileID: 0}
     - target: {fileID: 8897938779974254364, guid: d70875a0e26ee6a45a196af88b53fc2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032210315471000058, guid: d70875a0e26ee6a45a196af88b53fc2e,
         type: 3}
       propertyPath: m_IsActive
       value: 0

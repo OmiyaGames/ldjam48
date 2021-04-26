@@ -9,6 +9,7 @@ namespace LD48
 	/// </summary>
 	public class ClosestBoomboxDetector : MonoBehaviour
 	{
+		static float lastBoomboxTime = 0f;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -21,7 +22,7 @@ namespace LD48
 		[SerializeField]
 		Transform musicPosition;
 
-		AudioSource audio;
+		AudioSource musicPlayer;
 
 		/// <summary>
 		/// 
@@ -57,7 +58,7 @@ namespace LD48
 		void Awake()
 		{
 			Instance = this;
-			audio = musicPosition.GetComponent<AudioSource>();
+			musicPlayer = musicPosition.GetComponent<AudioSource>();
 
 			// Initially make the audio disabled
 			musicPosition.gameObject.SetActive(false);
@@ -68,6 +69,7 @@ namespace LD48
 		/// </summary>
 		private void OnDestroy()
 		{
+			StopMusic();
 			Instance = null;
 		}
 
@@ -117,20 +119,38 @@ namespace LD48
 			if(ClosestBoombox != null)
 			{
 				musicPosition.position = ClosestBoombox.transform.position;
-
-				// Check if this is the first time activating the music
-				if(musicPosition.gameObject.activeSelf == false)
-				{
-					// Activate the game object
-					musicPosition.gameObject.SetActive(true);
-
-					// Start at a random point in the music
-					audio.time = Random.value * audio.clip.length;
-					audio.Play();
-				}
+				PlayMusic();
 			}
 			else if(musicPosition.gameObject.activeSelf)
 			{
+				StopMusic();
+			}
+		}
+
+		private void PlayMusic()
+		{
+			// Check if this is the first time activating the music
+			if(musicPosition.gameObject.activeSelf == false)
+			{
+				// Activate the game object
+				musicPosition.gameObject.SetActive(true);
+
+				// Start at a random point in the music
+				musicPlayer.time = lastBoomboxTime;
+				musicPlayer.Play();
+			}
+		}
+
+		private void StopMusic()
+		{
+			// Check if audio has been activated
+			if(musicPosition.gameObject.activeSelf == true)
+			{
+				// Track the last point of the music before stopping
+				lastBoomboxTime = musicPlayer.time;
+				musicPlayer.Stop();
+
+				// Deactivate the game object
 				musicPosition.gameObject.SetActive(false);
 			}
 		}

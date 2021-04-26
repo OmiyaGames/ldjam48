@@ -21,6 +21,7 @@ namespace LD48
 		const string OpenBoolField = "Is Open";
 
 		public event System.Action<Door, bool> OnOpenChanged;
+		public event System.Action<Door, HoverInfo> OnHovered;
 
 		[SerializeField]
 		Animator animator;
@@ -83,13 +84,16 @@ namespace LD48
 							// Otherwise, indicate the door is locked
 							info = infoOnLocked;
 						}
+						OnHovered?.Invoke(this, info);
 						return true;
 					case State.Switch:
 						info = infoOnSwitch;
+						OnHovered?.Invoke(this, info);
 						return true;
 					default:
 					case State.OpenOnClick:
 						info = infoOnCanOpen;
+						OnHovered?.Invoke(this, info);
 						return true;
 				}
 			}
