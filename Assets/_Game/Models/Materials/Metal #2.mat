@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Table Material
-  m_Shader: {fileID: -6465566751694194690, guid: 7fea9d8769b8b2a4c93780a38ecd3711,
+  m_Name: Metal #2
+  m_Shader: {fileID: -6465566751694194690, guid: c27209a717d05a640a299c6837db7c67,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -99,7 +99,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_5BE7ABE8: 1.49
+    - Vector1_5BE7ABE8: 0.37
     - Vector1_73A86B72: 0.942
     - Vector1_A5838AAD: 0.7475
     - Vector1_B606E447: 0.264
@@ -124,7 +124,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline_Power: 0.034
+    - _Outline_Power: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -137,9 +137,16 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Bottom_Tint: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
     - Color_124F2392: {r: 0.9339623, g: 0.931467, b: 0.4528836, a: 1}
     - Color_438D4E14: {r: 0.08778922, g: 0.089718245, b: 0.33962262, a: 1}
     - Color_DA8480A4: {r: 0.41509432, g: 0.22021015, b: 0.08380205, a: 1}
+    - Light_Range: {r: 0.75, g: 1, b: 0, a: 0}
+    - Light_Tint: {r: 0.7298825, g: 0.8113208, b: 0.6077252, a: 1}
+    - Outline_Range: {r: 0.7475, g: 0.7525, b: 0, a: 0}
+    - Shade_Range: {r: 0, g: 0.25, b: 0, a: 0}
+    - Shade_Tint: {r: 0.1146315, g: 0.1203352, b: 0.1886792, a: 1}
+    - Top_Tint: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
     - Vector2_28EADCBD: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_481D6C12: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_7F13AB0E: {r: 1, g: 1, b: 0, a: 0}
