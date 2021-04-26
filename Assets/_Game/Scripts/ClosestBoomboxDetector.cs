@@ -21,6 +21,8 @@ namespace LD48
 		[SerializeField]
 		Transform musicPosition;
 
+		AudioSource audio;
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -55,6 +57,9 @@ namespace LD48
 		void Awake()
 		{
 			Instance = this;
+			audio = musicPosition.GetComponent<AudioSource>();
+
+			// Initially make the audio disabled
 			musicPosition.gameObject.SetActive(false);
 		}
 
@@ -112,9 +117,19 @@ namespace LD48
 			if(ClosestBoombox != null)
 			{
 				musicPosition.position = ClosestBoombox.transform.position;
-				musicPosition.gameObject.SetActive(true);
+
+				// Check if this is the first time activating the music
+				if(musicPosition.gameObject.activeSelf == false)
+				{
+					// Activate the game object
+					musicPosition.gameObject.SetActive(true);
+
+					// Start at a random point in the music
+					audio.time = Random.value * audio.clip.length;
+					audio.Play();
+				}
 			}
-			else
+			else if(musicPosition.gameObject.activeSelf)
 			{
 				musicPosition.gameObject.SetActive(false);
 			}
