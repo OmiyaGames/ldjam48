@@ -21,6 +21,8 @@ namespace LD48
 		}
 
 		[SerializeField]
+		ControllableTimeline.PlayState defaultGlobalState = ControllableTimeline.PlayState.Paused;
+		[SerializeField]
 		bool enablePlayKey = true;
 		[SerializeField]
 		bool enableRewindKey = true;
@@ -90,6 +92,12 @@ namespace LD48
 		}
 		#endregion
 
+		private void Start()
+		{
+			// Update timelines to a default state
+			ControllableTimeline.GlobalState = defaultGlobalState;
+		}
+
 		#region Input Actions
 		/// <summary>
 		/// 
@@ -117,7 +125,7 @@ namespace LD48
 		void UpdateTimelines()
 		{
 			// Default to paused
-			ControllableTimeline.GlobalState = ControllableTimeline.PlayState.Paused;
+			ControllableTimeline.GlobalState = defaultGlobalState;
 
 			// Check if script is enabled, and any key is down
 			if(enabled == true)

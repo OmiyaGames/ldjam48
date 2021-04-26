@@ -131,7 +131,7 @@ MonoBehaviour:
   triggerOnlyWhenHoldingKey: 1
   checkColliderTag: Player
   timeline: {fileID: 8811784596230895270}
-  rampUpMagnitude: 5
+  rampUpMagnitude: 7.5
   padPausing: 0.1
 --- !u!54 &1231531388753879067
 Rigidbody:
