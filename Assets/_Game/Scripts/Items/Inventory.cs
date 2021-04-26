@@ -24,6 +24,9 @@ namespace LD48
 		public const string HoveredItemChangedTrigger = "Item Changed";
 		public const string IsInteractableBoolField = "Is Interactable";
 
+		[SerializeField]
+		OmiyaGames.Audio.SoundEffect pickUpSound;
+
 		[Header("Raycast")]
 		[SerializeField]
 		float scanItemDistance = 5f;
@@ -279,6 +282,7 @@ namespace LD48
 			// Transfer the variable over
 			Carrying = HoveredItem;
 			HoveredItem = null;
+			pickUpSound.Play();
 
 			// Setup the item as in-inventory
 			Carrying.CurrentState = Item.State.InInventory;
