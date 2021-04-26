@@ -9,7 +9,17 @@ namespace LD48
 	/// </summary>
 	public class Inventory : MonoBehaviour
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public static Inventory Instance
+		{
+			get;
+			private set;
+		} = null;
+
 		public const string ItemHoveredBoolField = "Item Hovered";
+		public const string InteractableHoveredBoolField = "Interactable Hovered";
 		public const string ItemCarriedBoolField = "Carrying Item";
 		public const string HoveredItemChangedTrigger = "Item Changed";
 
@@ -32,6 +42,8 @@ namespace LD48
 		TextMeshProUGUI hoverLabel;
 		[SerializeField]
 		TextMeshProUGUI carryingItemLabel;
+		[SerializeField]
+		TextMeshProUGUI interactableLabel;
 
 		[Header("Debug")]
 		[SerializeField]
@@ -42,12 +54,13 @@ namespace LD48
 		Item hoveredItem = null;
 		[SerializeField]
 		[OmiyaGames.ReadOnly]
-		MonoBehaviour hoveredInteraction = null;
+		IInteractable hoveredInteraction = null;
 
 		Ray rayCache = new Ray();
 		RaycastHit hitCache;
 		float lastSetAction = 0;
 
+		#region Properties
 		/// <summary>
 		/// Indicates the item being carried
 		/// </summary>
@@ -84,17 +97,26 @@ namespace LD48
 		/// <summary>
 		/// 
 		/// </summary>
-		public MonoBehaviour HoveredInteraction
+		public IInteractable HoveredInteraction
 		{
 			get => hoveredInteraction;
 			private set
 			{
-				if(hoveredInteraction != null)
+				if(hoveredInteraction != value)
 				{
 					UpdateHud(hoveredInteraction, value);
 					hoveredInteraction = value;
 				}
 			}
+		}
+		#endregion
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void Awake()
+		{
+			Instance = this;
 		}
 
 		/// <summary>
@@ -102,6 +124,7 @@ namespace LD48
 		/// </summary>
 		void Update()
 		{
+			bool hoveredItem = false, hoveredInteractable = false;
 			// Check if we're NOT in the gap period
 			if((Time.time - lastSetAction) > gapBetweenActionSeconds)
 			{
@@ -119,19 +142,50 @@ namespace LD48
 						if(hitCache.collider.CompareTag(itemTag) == true)
 						{
 							HoveredItem = hitCache.collider.GetComponent<Item>();
-							return;
+							hoveredItem = true;
 						}
 						else if((hitCache.rigidbody != null) && (hitCache.rigidbody.CompareTag(itemTag) == true))
 						{
-							HoveredItem = hitCache.collider.GetComponent<Item>();
-							return;
+							HoveredItem = hitCache.rigidbody.GetComponent<Item>();
+							hoveredItem = true;
+						}
+					}
+
+					// Check if we've hovered on an item
+					if(hoveredItem == false)
+					{
+						// Check if we're hovering over an interactive item
+						if(hitCache.collider.CompareTag(interactiveTag) == true)
+						{
+							HoveredInteraction = hitCache.collider.GetComponent<IInteractable>();
+							hoveredInteractable = true;
+						}
+						else if((hitCache.rigidbody != null) && (hitCache.rigidbody.CompareTag(itemTag) == true))
+						{
+							HoveredInteraction = hitCache.rigidbody.GetComponent<IInteractable>();
+							hoveredInteractable = true;
 						}
 					}
 				}
 			}
 
 			// Otherwise, indicate we're not hovering over anything
-			HoveredItem = null;
+			if(hoveredItem == false)
+			{
+				HoveredItem = null;
+			}
+			if(hoveredInteractable == false)
+			{
+				HoveredInteraction = null;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void OnDestroy()
+		{
+			Instance = null;
 		}
 
 		/// <summary>
@@ -143,28 +197,58 @@ namespace LD48
 			if(context.phase == InputActionPhase.Canceled)
 			{
 				// Check what the intended action is
+				bool dropItem = true;
 				if((Carrying == null) && (HoveredItem != null))
 				{
 					PickUpItem();
+					dropItem = false;
 				}
-				else if(HoveredInteraction != null)
+				else if(HoveredInteraction?.OnClick(this) == true)
 				{
-					// FIXME: do something with the interaction!
-
 					// Temporarily disable any actions
+					dropItem = false;
 					lastSetAction = Time.time;
 				}
-				else if(Carrying != null)
+
+				if((dropItem == true) && (Carrying != null))
 				{
 					DropItem();
 				}
 			}
 			else if(Carrying != null)
 			{
-				Carrying.IsDropLocationVisible = (context.phase == InputActionPhase.Performed);
+				// Check if we want to show the sillohette
+				bool showSillohette = false;
+				if(context.phase == InputActionPhase.Performed)
+				{
+					showSillohette = true;
+
+					// First, check if we're hovering something we can interact with
+					IInteractable.HoverInfo info = null;
+					if((HoveredInteraction?.OnHover(this, out info) == true) && (info.displayIcon == IInteractable.HoverIcon.Interact))
+					{
+						showSillohette = false;
+					}
+				}
+
+				// Otherwise, show the drop sillouhette
+				Carrying.IsDropLocationVisible = showSillohette;
 			}
 		}
 
+		/// <summary>
+		/// Destroy the item the inventory is carrying
+		/// </summary>
+		public void DestroyCarryingItem()
+		{
+			if(Carrying)
+			{
+				Destroy(Carrying.gameObject);
+				Carrying = null;
+			}
+		}
+
+		#region Helpers
 		/// <summary>
 		/// 
 		/// </summary>
@@ -241,25 +325,33 @@ namespace LD48
 		/// </summary>
 		/// <param name="oldInteraction"></param>
 		/// <param name="newInteraction"></param>
-		private void UpdateHud(MonoBehaviour oldInteraction, MonoBehaviour newInteraction)
+		private void UpdateHud(IInteractable oldInteraction, IInteractable newInteraction)
 		{
-			//FIXME: actually update the HUD
+			// Execute the hover action
+			bool showInteraction = false;
+			if(newInteraction && newInteraction.OnHover(this, out IInteractable.HoverInfo info))
+			{
+				// Set whether to show the hover information
+				interactiveHud.SetBool(InteractableHoveredBoolField, true);
+				interactableLabel.text = info.displayInstructions;
+
+				// FIXME: actually update the HUD
+				showInteraction = (info.displayIcon == IInteractable.HoverIcon.Interact);
+			}
+			else
+			{
+				// Set whether to show the hover information
+				interactiveHud.SetBool(InteractableHoveredBoolField, false);
+			}
 
 			// Check if we're carrying an item
 			if(Carrying)
 			{
-				if(newInteraction == null)
-				{
-					// Show the drop item prompt if we're not going to interact with anything.
-					interactiveHud.SetBool(ItemCarriedBoolField, true);
-				}
-				else if(newInteraction.enabled)
-				{
-					// Hide the drop item prompt if we could interact with something.
-					// The interaction takes priority.
-					interactiveHud.SetBool(ItemCarriedBoolField, false);
-				}
+				// Hide the drop item prompt if we could interact with something.
+				// The interaction takes priority.
+				interactiveHud.SetBool(ItemCarriedBoolField, !showInteraction);
 			}
 		}
+		#endregion
 	}
 }
