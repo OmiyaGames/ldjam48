@@ -25,8 +25,9 @@ namespace LD48
 		/// </summary>
 		public enum Type
 		{
-			Default,
-			Key
+			Other,
+			Key,
+			Boombox
 		}
 		/// <summary>
 		/// 
@@ -36,7 +37,7 @@ namespace LD48
 		[SerializeField]
 		string displayName = "item";
 		[SerializeField]
-		Type itemType = Type.Default;
+		Type itemType = Type.Other;
 
 		[Header("Inventory State")]
 		[SerializeField]
@@ -126,6 +127,10 @@ namespace LD48
 			if(OriginalParent == null)
 			{
 				Reset();
+			}
+			if(itemType == Type.Boombox)
+			{
+				ClosestBoomboxDetector.AddBoombox(this);
 			}
 		}
 
