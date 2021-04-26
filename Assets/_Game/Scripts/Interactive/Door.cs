@@ -29,6 +29,8 @@ namespace LD48
 		State doorType;
 		[SerializeField]
 		Rigidbody[] activateOnUnlock;
+		[SerializeField]
+		OmiyaGames.Audio.SoundEffect soundEffect;
 
 		[Header("Hover Display")]
 		[SerializeField]
@@ -56,6 +58,11 @@ namespace LD48
 					isOpen = value;
 					animator.SetBool(OpenBoolField, isOpen);
 					OnOpenChanged?.Invoke(this, isOpen);
+
+					if(isOpen)
+					{
+						soundEffect.Play();
+					}
 				}
 			}
 		}
