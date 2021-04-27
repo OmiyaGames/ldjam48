@@ -117,6 +117,12 @@ MonoBehaviour:
       dictionary: {fileID: 11400000, guid: c3ca07e6811f27b4d82bb14629e8450c, type: 2}
     cursorMode: 1
     revertTimeScale: 1
+  - scenePath: Assets/_Game/Scenes/Level 4.unity
+    displayName:
+      key: Level Button
+      dictionary: {fileID: 11400000, guid: c3ca07e6811f27b4d82bb14629e8450c, type: 2}
+    cursorMode: 1
+    revertTimeScale: 1
   debugLockMode: 0
 --- !u!1 &104202
 GameObject:

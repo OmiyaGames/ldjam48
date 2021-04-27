@@ -118,6 +118,10 @@ namespace LD48
 		/// </summary>
 		void FixedUpdate()
 		{
+			if(enabled == false)
+			{
+				return;
+			}
 			double newTime = Director.time;
 			switch(State)
 			{
