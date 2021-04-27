@@ -209,7 +209,7 @@ MonoBehaviour:
     enabledFor: -1
   controlsButton:
     component: {fileID: 1352577601795759354}
-    enabledFor: -1
+    enabledFor: 0
   graphicsButton:
     component: {fileID: 1352662868994307320}
     enabledFor: -1
@@ -218,7 +218,7 @@ MonoBehaviour:
     enabledFor: -1
   languageButton:
     component: {fileID: 1354244534839489822}
-    enabledFor: -1
+    enabledFor: 0
   resetDataButton:
     component: {fileID: 1352742686361537662}
     enabledFor: 0
@@ -2992,7 +2992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1174921630295191478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3181,7 +3181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1175420126394501622
 RectTransform:
   m_ObjectHideFlags: 0
