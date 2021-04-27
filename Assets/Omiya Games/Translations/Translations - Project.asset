@@ -34,18 +34,20 @@ MonoBehaviour:
         <b>3D
         Models</b>
 
+        Mike Volckmann
+
         Taro Omiya
 
 
-        <b>2D Textures</b>
+        <b>Music</b>
 
         Taro
         Omiya
 
 
-        <b>Music</b>
+        <b>Sound Effects</b>
 
-        Taro Omiya
+        Mostly Public Domain
 
 
         <b>Fonts</b>
@@ -61,29 +63,19 @@ MonoBehaviour:
 
 
         <b>Special
-        Effects</b>
-
-        All particles effects
-
-        by Taro Omiya
-
-
-        <b>Special
         Thanks</b>
 
         Tech Valley Game Space
 
-        Tech Valley Center of
-        Gravity
-
 
         <b>Support us on Ko-fi!</b>
 
-        Donate at: <link="kofi"><u>ko-fi.com/omiyagames</u></link>
+        Donate
+        at: <link="kofi"><u>ko-fi.com/omiyagames</u></link>
 
 
-        Thanks
-        for playing!'
+        Thanks for
+        playing!'
   - key: Developer Website's Name
     allTranslations:
     - languageIndex: 0
