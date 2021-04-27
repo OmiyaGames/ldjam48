@@ -1,0 +1,40 @@
+? Boxes hitting ground
+
+"CardboardBoxes_01.wav" by SoundsLikeJoe
+Public Domain
+
+
+
+? Generic Drop sound
+
+"drop07.wav" by newagesoup
+Public Domain
+
+
+
+? Open wooden door
+
+"Wooden Door.wav" by vero.marengere
+CC BY-NC 3.0
+
+
+
+? OpeningDoor2
+
+"Opening Door 1" by SeanSecret
+Public Domain
+
+
+
+? Dropped keys 
+
+"keys_dropped.wav" by vibe_crc
+Public Domain
+
+
+
+? 534357__defaultv__pickup-item 
+
+"Pickup_item.mp3" by Defaultv
+Public Domain
+
