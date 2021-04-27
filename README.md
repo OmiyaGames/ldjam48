@@ -1,5 +1,5 @@
-# [Omiya Games](https://www.omiyagames.com/) - Ludum Dare 48 entry
+# [Walls](https://omiyagames.itch.io/walls) - a Ludum Dare 48 entry by [Omiya Games](https://omiyagames.com) 
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I51KS8F)
 
-I have no idea what I'm doing...
+A puzzle game about walls.
