@@ -25,30 +25,81 @@ MonoBehaviour:
     - languageIndex: 0
       text: 'Created by Omiya Games
 
+        
 
         <b>Programming</b>
-
-        Taro Omiya
-
-
-        <b>3D
-        Models</b>
-
-        Mike Volckmann
-
-        Taro Omiya
-
-
-        <b>Music</b>
 
         Taro
         Omiya
 
+        
 
-        <b>Sound Effects</b>
+        <b>3D Models</b>
 
-        Mostly Public Domain
+        Mike Volckmann
 
+        Taro
+        Omiya
+
+        
+
+        <b>Music</b>
+
+        Taro Omiya
+
+        
+
+        <b>Sound
+        Effects</b>
+
+        From FreeSound.org:
+
+        
+
+        "CardboardBoxes_01.wav"
+
+        by
+        SoundsLikeJoe
+
+        
+
+        "drop07.wav"
+
+        by newagesoup
+
+        
+
+        "Wooden
+        Door.wav"
+
+        by vero.marengere
+
+        
+
+        "Opening Door
+        1"
+
+        by SeanSecret
+
+        
+
+        "keys_dropped.wav"
+
+        by
+        vibe_crc
+
+        
+
+        "Pickup_item.mp3"
+
+        by Defaultv
+
+        
+
+        All
+        Public Domain
+
+        
 
         <b>Fonts</b>
 
@@ -61,21 +112,24 @@ MonoBehaviour:
 
         <link="license-font"><u>scripts.sil.org/OFL</u></link></size>
 
+        
 
         <b>Special
         Thanks</b>
 
         Tech Valley Game Space
 
+        
 
-        <b>Support us on Ko-fi!</b>
+        <b>Support
+        us on Ko-fi!</b>
 
-        Donate
-        at: <link="kofi"><u>ko-fi.com/omiyagames</u></link>
+        Donate at: <link="kofi"><u>ko-fi.com/omiyagames</u></link>
 
+        
 
-        Thanks for
-        playing!'
+        Thanks
+        for playing!'
   - key: Developer Website's Name
     allTranslations:
     - languageIndex: 0
@@ -101,22 +155,26 @@ MonoBehaviour:
         <b>Controls:</b>
 
 
-        * WASD to move.
+        * WASD to
+        move.
 
 
         * Move mouse to look around.
 
 
-        * When cursor changes, click to make a context-sensitive action.
+        * When cursor changes,
+        click to make a context-sensitive action.
 
 
-        * Tap the space bar to jump.
+        * Tap the space bar to
+        jump.
 
 
         * (Level 4, only) hold E to fast-forward.
 
 
-        * (Level 4, only) hold Q to rewind.'
+        * (Level
+        4, only) hold Q to rewind.'
   - key: New High Score Format
     allTranslations:
     - languageIndex: 0

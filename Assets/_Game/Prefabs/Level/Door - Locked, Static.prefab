@@ -963,7 +963,7 @@ PrefabInstance:
     - target: {fileID: 7122651801386153773, guid: aed06f00eb447e34085123a9195a3276,
         type: 3}
       propertyPath: clipVariations.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7122651801386153773, guid: aed06f00eb447e34085123a9195a3276,
         type: 3}
@@ -974,7 +974,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: f01989e69a191204b8ab3ca4f9a126e3, type: 3}
+      objectReference: {fileID: 8300000, guid: 4de3124c0ffccf14ab24650221a1eec4, type: 3}
     - target: {fileID: 7122651801391927629, guid: aed06f00eb447e34085123a9195a3276,
         type: 3}
       propertyPath: m_RootOrder

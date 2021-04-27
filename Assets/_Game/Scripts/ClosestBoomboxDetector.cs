@@ -9,7 +9,7 @@ namespace LD48
 	/// </summary>
 	public class ClosestBoomboxDetector : MonoBehaviour
 	{
-		static float lastBoomboxTime = 0f;
+		static int lastBoomboxTime = 0;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -136,8 +136,13 @@ namespace LD48
 				musicPosition.gameObject.SetActive(true);
 
 				// Start at a random point in the music
-				musicPlayer.time = lastBoomboxTime;
+				musicPlayer.timeSamples = lastBoomboxTime;
 				musicPlayer.Play();
+			}
+			else if(musicPlayer.timeSamples > 0)
+			{
+				// Always track how far music progressed
+				lastBoomboxTime = musicPlayer.timeSamples;
 			}
 		}
 
@@ -146,9 +151,7 @@ namespace LD48
 			// Check if audio has been activated
 			if(musicPosition.gameObject.activeSelf == true)
 			{
-				// Track the last point of the music before stopping
-				lastBoomboxTime = musicPlayer.time;
-				musicPlayer.Stop();
+				musicPlayer.Pause();
 
 				// Deactivate the game object
 				musicPosition.gameObject.SetActive(false);

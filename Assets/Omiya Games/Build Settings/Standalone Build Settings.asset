@@ -101,7 +101,7 @@ MonoBehaviour:
     - type: 0
       text: )
     asSlug: 0
-  buildNumber: 1
+  buildNumber: 2
   enableStrictMode: 0
   enableAssertions: 0
   customScenes:
@@ -132,7 +132,7 @@ MonoBehaviour:
   customScriptDefineSymbols:
     enable: 0
     customValue: 
-  architecture: 0
+  architecture: 1
   compression: 2
   scriptingBackend: 0
   enableHeadlessMode: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
     - type: 0
       text: )
     asSlug: 0
-  buildNumber: 1
+  buildNumber: 2
   enableStrictMode: 0
   enableAssertions: 0
   customScenes:
@@ -579,7 +579,7 @@ MonoBehaviour:
     - type: 0
       text: )
     asSlug: 0
-  buildNumber: 3
+  buildNumber: 2
   enableStrictMode: 0
   enableAssertions: 0
   customScenes:
@@ -668,7 +668,7 @@ MonoBehaviour:
     - type: 0
       text: )
     asSlug: 0
-  buildNumber: 1
+  buildNumber: 2
   enableStrictMode: 0
   enableAssertions: 0
   customScenes:
@@ -699,6 +699,6 @@ MonoBehaviour:
   customScriptDefineSymbols:
     enable: 0
     customValue: 
-  architecture: 0
+  architecture: 1
   compression: 2
   scriptingBackend: 0
