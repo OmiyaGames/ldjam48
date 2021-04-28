@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.1-WebGLPort
+
+- Port supporting WebGL to Itch.io, GameJolt, and Newgrounds.
+- Updating [LICENSE.md](/LICENSE.md) for preparation of making this repo open-source.
+
 ## 1.0.1
 
 - Bug fix release.
