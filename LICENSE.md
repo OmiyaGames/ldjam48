@@ -2,8 +2,11 @@ Full Details
 ------------------------------------------
 
 * Each source code should now have license information.  If not, assume they're under the MIT license, listed below.
-* Any non-code, text-based files, such as animations and prefabs, are under the MIT license, listed below (unless noted otherwise).
-* All binary files, including images and sound effects, are under Copyright (c) 2021 Omiya Games (unless noted otherwise).
+* Any non-code, text-based files, such as animations, music, and prefabs, are under the MIT license, listed below (unless noted otherwise).
+* Models under `Assets/_Game/Models` created by Michael Volckman.  Copyright (c) 2021 Michael Volckman (models were used with his permission.)
+* Music `Assets/_Game/Audio/Ld48.ogg` composed by Taro Omiya.  Copyright (c) 2021 Omiya Games.
+* All `*.wav` files in `Assets/_Game/Audio/` are Public Domain.
+* The rest of the binary files, including images and sound effects, are under Copyright (c) 2021 Omiya Games (unless noted otherwise).
 
 The MIT License (MIT)
 ===============
