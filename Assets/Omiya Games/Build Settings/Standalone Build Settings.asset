@@ -200,7 +200,7 @@ MonoBehaviour:
   customScriptDefineSymbols:
     enable: 0
     customValue: 
-  templatePath: PROJECT:Embedded Build
+  templatePath: PROJECT:Embed
   hostSpecificArchiveSettings:
   - {fileID: 114273511369747482}
   - {fileID: 114626522699302408}
